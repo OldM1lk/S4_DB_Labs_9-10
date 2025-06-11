@@ -12,7 +12,7 @@
     <button type="submit">Поиск</button>
 </form>
 
-<form action="/" method="get">
+<form action="/" method="get" style="margin-bottom: 8px;">
     <select name="author" required>
         <option value="" disabled <%= !query.author ? 'selected' : '' %>>Выберите автора</option>
         <% authors.forEach(author => { %>
@@ -22,16 +22,35 @@
     <button type="submit">Поиск</button>
 </form>
 
+<form action="/" method="get">
+    <label>Поиск по дате:</label><br>
+    <input type="date" name="startDate" value="<%= query.startDate || '' %>">
+    <input type="date" name="endDate" value="<%= query.endDate || '' %>">
+    <button type="submit">Поиск</button>
+</form>
 
 <hr>
 
 <h2>Список статей</h2>
+
+<form action="/top">
+    <button type="submit" style="margin-bottom: 8px;">Топ статей</button>
+</form>
+<form action="/new">
+    <button type="submit" style="margin-bottom: 8px;">Добавить статью</button>
+</form>
+
 <ol>
     <% articles.forEach((article) => { %>
         <li style="margin-bottom: 8px;">
             <strong>Название:</strong> <%= article.title %><br>
             <strong>Авторы:</strong> <%= article.authors.join(", ") %><br>
-            <strong>Дата:</strong> <%= article.date.toLocaleDateString() %>
+            <strong>Дата:</strong> <%= article.date.toLocaleDateString() %><br>
+            <a href="/article/<%= article._id %>" style="text-decoration: none;">Подробнее</a><br>
+            <form action="/delete/<%= article._id %>" method="POST"
+                  onsubmit="return confirm('Вы уверены, что хотите удалить эту статью?');">
+                <button type="submit" style="margin-top: 4px">Удалить</button>
+            </form>
         </li>
     <% }) %>
 </ol>

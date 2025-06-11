@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= article.title %></title>
+</head>
+<body>
+<h1><%= article.title %></h1>
+<p><strong>Авторы:</strong> <%= article.authors.join(", ") %></p>
+<p><strong>Дата размещения:</strong> <%= article.date.toLocaleDateString() %></p>
+<p><strong>Содержимое статьи:</strong></p>
+<p><%= article.content %></p>
+
+<h2>Теги:</h2>
+<ul>
+    <% article.tags.forEach(tag => { %>
+        <li><%= tag %></li>
+    <% }) %>
+</ul>
+
+<h2>Рецензии:</h2>
+<% if (article.reviews.length > 0) { %>
+    <ul>
+        <% article.reviews.forEach(review => { %>
+            <li style="margin-bottom: 10px;">
+                <strong><%= review.name %>:</strong>
+                <em>(оценка: <%= review.rating %>/10)</em><br>
+                <%= review.message %>
+            </li>
+        <% }) %>
+    </ul>
+<% } else { %>
+    <p>Рецензий пока нет.</p>
+<% } %>
+
+<a href="/">← Назад к списку</a>
+</body>
+</html>

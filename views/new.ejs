@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Добавить статью</title>
+</head>
+<body>
+<h1>Добавить новую статью</h1>
+<form action="/new" method="post">
+    <label>Название:</label><br>
+    <input type="text" name="title" required><br><br>
+
+    <label>Авторы (через запятую):</label><br>
+    <input type="text" name="authors" required><br><br>
+
+    <label>Дата размещения:</label><br>
+    <input type="date" name="date" required><br><br>
+
+    <label>Содержимое статьи:</label><br>
+    <textarea name="content" rows="6" cols="60" required></textarea><br><br>
+
+    <label>Теги (через запятую):</label><br>
+    <input type="text" name="tags"><br><br>
+
+    <h3>Первая рецензия</h3>
+
+    <label>Имя рецензента:</label><br>
+    <input type="text" name="reviewName"><br><br>
+
+    <label>Текст рецензии:</label><br>
+    <textarea name="reviewMessage" rows="4" cols="60"></textarea><br><br>
+
+    <label>Оценка (1–10):</label><br>
+    <input type="number" name="reviewRating" min="1" max="10"><br><br>
+
+    <button type="submit">Сохранить</button>
+</form>
+
+<br>
+<a href="/">← Назад</a>
+</body>
+</html>

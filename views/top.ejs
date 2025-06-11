@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Топ статей</title>
+</head>
+<body>
+<h1>Топ статей по рейтингу</h1>
+<a href="/">← Назад</a>
+<hr>
+
+<ol>
+    <% articles.forEach((article, index) => { %>
+        <li style="margin-bottom: 12px;">
+            <strong>Название:</strong> <%= article.title %><br>
+            <strong>Авторы:</strong> <%= article.authors.join(", ") %><br>
+            <strong>Дата:</strong> <%= new Date(article.date).toLocaleDateString('ru-RU') %><br>
+            <strong>Средний рейтинг:</strong> <%= article.averageRating.toFixed(1) %><br>
+            <strong>Количество рецензий:</strong> <%= article.reviewCount %><br>
+            <a href="/article/<%= article._id %>">Подробнее</a>
+        </li>
+    <% }); %>
+</ol>
+</body>
+</html>

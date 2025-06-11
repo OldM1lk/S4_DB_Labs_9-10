@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Articles = require('./models/articles');
 
-mongoose.connect('mongodb://localhost:27017/journal');
+mongoose.connect('mongodb://localhost:27017/Journal');
 
 const sampleArticles = [
     {
@@ -15,6 +15,11 @@ const sampleArticles = [
                 name: "Анна",
                 message: "Очень интересная и актуальная тема!",
                 rating: 9
+            },
+            {
+                name: "Иван",
+                message: "Неинтересная и неактуальная статья",
+                rating: 1
             }
         ]
     },
@@ -29,6 +34,11 @@ const sampleArticles = [
                 name: "Павел",
                 message: "Хороший обзор, не хватает сравнительного анализа с Антарктикой.",
                 rating: 8
+            },
+            {
+                name: "Александр",
+                message: "Нелохая статья, достаточно интересная тема.",
+                rating: 7
             }
         ]
     },
@@ -71,6 +81,11 @@ const sampleArticles = [
                 name: "Олег",
                 message: "Полезный материал для начинающих специалистов.",
                 rating: 8
+            },
+            {
+                name: "Наталья",
+                message: "Скам статья",
+                rating: 1
             }
         ]
     }
