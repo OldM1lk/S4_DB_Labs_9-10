@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Электронный научный журнал</title>
+</head>
+<body>
+<h1>Электронный научный журнал</h1>
+
+<form action="/" method="get" style="margin-bottom: 8px;">
+    <input type="text" name="title" placeholder="Поиск по названию"
+           value="<%= typeof query.title !== 'undefined' ? query.title : '' %>">
+    <button type="submit">Поиск</button>
+</form>
+
+<form action="/" method="get">
+    <select name="author" required>
+        <option value="" disabled <%= !query.author ? 'selected' : '' %>>Выберите автора</option>
+        <% authors.forEach(author => { %>
+            <option value="<%= author %>" <%= query.author === author ? 'selected' : '' %>><%= author %></option>
+        <% }); %>
+    </select>
+    <button type="submit">Поиск</button>
+</form>
+
+
+<hr>
+
+<h2>Список статей</h2>
+<ol>
+    <% articles.forEach((article) => { %>
+        <li style="margin-bottom: 8px;">
+            <strong>Название:</strong> <%= article.title %><br>
+            <strong>Авторы:</strong> <%= article.authors.join(", ") %><br>
+            <strong>Дата:</strong> <%= article.date.toLocaleDateString() %>
+        </li>
+    <% }) %>
+</ol>
+</body>
+</html>
