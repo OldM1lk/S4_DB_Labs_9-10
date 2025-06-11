@@ -30,21 +30,4 @@ app.get('/', async (req, res) => {
     }
 });
 
-app.get('/articles', async (req, res) => {
-    const articles = await Article.find();
-    res.render('articles', {articles});
-});
-
-app.post('/search/title', async (req, res) => {
-    const query = req.body.title;
-    const articles = await Article.find({title: {$regex: query, $options: 'i'}});
-    res.render('articles', {articles});
-});
-
-app.post('/search/author', async (req, res) => {
-    const author = req.body.author;
-    const articles = await Article.find({authors: author});
-    res.render('articles', {articles});
-});
-
 app.listen(3000, () => console.log("Server started on http://localhost:3000"));
